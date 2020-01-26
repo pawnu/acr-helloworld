@@ -20,7 +20,7 @@ steps:
       sudo apt-get update -y
       sudo apt install docker.io -y
       sudo apt-get install -y docker-compose
-      sudo usermod -aG docker ubuntu
+
 - task: CmdLine@2
   inputs:
     script: |
