@@ -17,9 +17,10 @@ steps:
   inputs:
     script: |
       echo Write your commands here
-      apt-get update -y
-      apt install docker.io -y
-      apt-get install -y docker-compose
+      sudo apt-get update -y
+      sudo apt install docker.io -y
+      sudo apt-get install -y docker-compose
+      sudo usermod -aG docker ubuntu
 - task: CmdLine@2
   inputs:
     script: |
