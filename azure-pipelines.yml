@@ -1,0 +1,33 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Write your commands here
+      apt-get update
+      apt install docker.io -y
+      apt-get install -y docker-compose
+- task: CmdLine@2
+  inputs:
+    script: |
+      cd acr-helloworld
+      docker-compose build
+      docker run -d -p 8080:80 acr-helloworld
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
